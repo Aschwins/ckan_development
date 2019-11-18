@@ -1,1 +1,20 @@
-Hello Group
+<!DOCTYPE html>
+
+{% ckan_extends %}
+
+{#
+{% block primary_content_inner %}
+    Hello block world2!
+{% endblock %}
+#}
+
+
+{% block primary_content_inner %}
+
+    <b>Hallo DSM-er kies hier je groep!</b>
+
+    {# Insert the contents of the original featured_group block: #}
+    {{ super() }}
+
+{% endblock %}
+
