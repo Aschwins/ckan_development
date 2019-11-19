@@ -1,0 +1,4 @@
+include README.rst
+include LICENSE
+include requirements.txt
+recursive-include ckanext/excelparser *.html *.json *.js *.less *.css *.mo
