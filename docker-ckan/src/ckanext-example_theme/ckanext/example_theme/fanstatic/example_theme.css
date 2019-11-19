@@ -3,8 +3,9 @@
    ===================================================== */
 
    .account-masthead {
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(228, 151, 67);
 }
+
 /* The "bubble" containing the number of new notifications. */
 .account-masthead .account .notifications a span {
   background-color: black;
@@ -31,13 +32,13 @@
 /* The "navigation pills" in the masthead (the links to Datasets,
    Organizations, etc) when the user's pointer hovers over them. */
 .masthead .navigation .nav-pills li a:hover {
-  background-color: rgb(48, 48, 48);
+  background-color: rgb(255, 255, 255, 0.6);
   color: white;
 }
 /* The "active" navigation pill (for example, when you're on the /dataset page
    the "Datasets" link is active). */
 .masthead .navigation .nav-pills li.active a {
-  background-color: rgb(74, 74, 74);
+  background-color: rgb(255, 255, 255, 0.6);
 }
 /* The "box shadow" effect that appears around the search box when it
    has the keyboard cursor's focus. */
@@ -89,7 +90,7 @@
 
 .site-footer,
 body {
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(28, 79, 156);
 }
 /* The text in the footer. */
 .site-footer,
@@ -100,4 +101,18 @@ body {
 /* The link texts in the footer. */
 .site-footer a {
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* ====================================
+   DSM CUSTOM THEMING
+   ==================================== */
+
+/* DSM Darkblue Navbar*/
+.navbar.navbar-static-top.masthead, .btn.btn-primary, .tags{
+  background-color: rgb(28, 79, 156);
+}
+
+/* DSM Darkblue Tags*/
+.col-md-6.col2 .module.module-search.module-narrow.module-shallow.box .tags{
+  background-color: rgb(28, 79, 156);
 }
