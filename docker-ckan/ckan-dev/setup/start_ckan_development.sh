@@ -79,3 +79,9 @@ supervisord --configuration /etc/supervisord.conf &
 
 # Start the development server with automatic reload
 paster serve --reload $CKAN_INI
+
+# Set ckanext-scheming variables
+echo "Enabling Scheming "
+paster --plugin=ckan config-tool $CKAN_INI -s $CKAN_INI "scheming.dataset_schemas = ckanext.scheming:ana_dataset_tweaked.json"
+paster --plugin=ckan config-tool $CKAN_INI -s $CKAN_INI "scheming.presets = ckanext.scheming:presets.json"
+paster --plugin=ckan config-tool $CKAN_INI -s $CKAN_INI "scheming.dataset_fallback = false"

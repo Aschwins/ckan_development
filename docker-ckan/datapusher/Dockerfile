@@ -9,6 +9,10 @@ ENV JOB_CONFIG ${APP_DIR}/datapusher_settings.py
 
 WORKDIR ${APP_DIR}
 
+RUN echo https://ams.edge.kernel.org/alpine/v3.6/main > /etc/apk/repositories; \
+    echo https://ams.edge.kernel.org/alpine/v3.6/community >> /etc/apk/repositories
+
+RUN apk update
 RUN apk add --no-cache python \
     py-pip \
     py-gunicorn \

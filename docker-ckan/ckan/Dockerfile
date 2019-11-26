@@ -29,3 +29,7 @@ RUN for d in $APP_DIR/patches/*; do \
             done ; \
         fi ; \
     done
+
+# Make sure config variables from extensions get added
+COPY setup/add_config_vars.sh ${APP_DIR}
+CMD ["/srv/app/start_ckan_development.sh"]
