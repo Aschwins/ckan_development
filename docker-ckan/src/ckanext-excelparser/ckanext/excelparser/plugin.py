@@ -1,3 +1,9 @@
+"""
+This CKAN plugin implements the IDatasetForm to follow the DefaultDatasetForm, remove redundant fields and add the
+following fields:
+- data_category \in {'px_sample_info', 'px_abundancies', 'fasta_file'}
+"""
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import logging
@@ -11,8 +17,34 @@ logging.basicConfig(
 keys_to_remove = [u'version', u'author', u'url', u'maintainer', u'author_email', u'maintainer_email', u'private']
 
 
+def get_data_categories():
+    """
+    Data categories define what has to be done with the data.
+    :return: All available data categories.
+    """
+    return [u"open", u"px_sample_info", u"px_abundancies", u"px_fasta_file"]
+
+
 class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm):
-    # IAuthfunctions
+    # IConfigurer
+    plugins.implements(plugins.IConfigurer)
+
+    def update_config(self, config_):
+        toolkit.add_template_directory(config_, 'templates')
+        toolkit.add_public_directory(config_, 'public')
+        toolkit.add_resource('fanstatic', 'extrafields')
+
+    # ITemplatehelpers
+    plugins.implements(plugins.ITemplateHelpers)
+
+    def get_helpers(self):
+        """
+        Register the get_data_categories function to the template helpers.
+        """
+        logger.debug("Added new helper function.")
+        return {"excelparser_get_data_categories": get_data_categories}
+
+    # IDatasetForm
     plugins.implements(plugins.IDatasetForm)
 
     def is_fallback(self):
@@ -133,12 +165,3 @@ class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetF
 
     def package_types(self):
         return []
-
-    # IConfigurer edits
-    plugins.implements(plugins.IConfigurer)
-
-    def update_config(self, config_):
-        toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'extrafields')
-

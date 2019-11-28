@@ -19,14 +19,31 @@
         {% endblock %}
     #}
 
-    {% block package_metadata_fields_custom %}
-        {{
-                form.input('Data Category', label=_('Data Category'), id='field-data_category', placeholder=_('Data Category'),
-                value=data.data_category, error=errors.data_category, classes=['control-medium'])
-        }}
-    {% endblock %}
-
-  {% block dataset_fields %}
-  {% endblock %}
+    <div class="form-group">
+        {% set error = errors.data_category %}
+        <label class="control-label" for="field-data_category">{{ _("Data Category") }}</label>
+        <div class="controls">
+            <div class="row">
+                <div class="col-md-6">
+                    <select id="field-data_category" name="data_category" data-module="autocomplete">
+                        {% set existing_data_category = data.get('data_category') %}
+                        {% for data_category in h.excelparser_get_data_categories() %}
+                            <option value="{{ data_category }}" {% if existing_data_category == data_category %}selected="selected"{% endif %}>{{ data_category }}</option>
+                        {% endfor %}
+                    </select>
+                    {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
+                </div>
+                <div class="col-md-6">
+                    <span class="info-block info-inline">
+                        <i class="fa fa-info-circle"></i>
+                        {% trans %}
+                            Pick the data category of the file you want to upload. The data category defines what pipelines it goes through.
+                            at <a href="http://opendefinition.org/licenses/">ckanpipelines.org</a>
+                        {% endtrans %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
