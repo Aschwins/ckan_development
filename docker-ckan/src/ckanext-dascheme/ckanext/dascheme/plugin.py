@@ -25,7 +25,7 @@ def get_data_categories():
     return [u"open", u"px_sample_info", u"px_abundancies", u"px_fasta_file"]
 
 
-class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm):
+class daschemePlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm):
     # IConfigurer
     plugins.implements(plugins.IConfigurer)
 
@@ -42,14 +42,14 @@ class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetF
         Register the get_data_categories function to the template helpers.
         """
         logger.debug("Added new helper function.")
-        return {"excelparser_get_data_categories": get_data_categories}
+        return {"dascheme_get_data_categories": get_data_categories}
 
     # IDatasetForm
     plugins.implements(plugins.IDatasetForm)
 
     def is_fallback(self):
         """
-        :return: Set ExcelParser as DefaultDataSetForm
+        :return: Set dascheme as DefaultDataSetForm
         """
         return True
 
@@ -74,7 +74,7 @@ class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetF
           and converter functions to be applied to those keys
         :rtype: dictionary
         """
-        schema = super(ExcelparserPlugin, self).create_package_schema()
+        schema = super(daschemePlugin, self).create_package_schema()
         logger.debug(u"CREATE: Found Schema: {0}".format(schema))
         schema.update({
             'data_category': [toolkit.get_validator('ignore_missing'),
@@ -110,7 +110,7 @@ class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetF
         :rtype: dictionary
 
         """
-        schema = super(ExcelparserPlugin, self).update_package_schema()
+        schema = super(daschemePlugin, self).update_package_schema()
 
         # Our custom field
         logger.debug(u"UPDATE: Found Schema: {0}".format(schema))
@@ -150,7 +150,7 @@ class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetF
 
         """
 
-        schema = super(ExcelparserPlugin, self).show_package_schema()
+        schema = super(daschemePlugin, self).show_package_schema()
 
         # Our custom field
         schema.update({

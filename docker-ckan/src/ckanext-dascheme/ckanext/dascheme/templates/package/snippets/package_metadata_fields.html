@@ -27,7 +27,7 @@
                 <div class="col-md-6">
                     <select id="field-data_category" name="data_category" data-module="autocomplete">
                         {% set existing_data_category = data.get('data_category') %}
-                        {% for data_category in h.excelparser_get_data_categories() %}
+                        {% for data_category in h.dascheme_get_data_categories() %}
                             <option value="{{ data_category }}" {% if existing_data_category == data_category %}selected="selected"{% endif %}>{{ data_category }}</option>
                         {% endfor %}
                     </select>

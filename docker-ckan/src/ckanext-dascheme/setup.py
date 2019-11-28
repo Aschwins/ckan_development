@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-excelparser''',
+    name='''ckanext-dascheme''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -21,7 +21,7 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/Aschwins/ckanext-excelparser',
+    url='https://github.com/Aschwins/ckanext-dascheme',
 
     # Author details
     author='''Aschwin Schilperoort''',
@@ -80,7 +80,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        excelparser=ckanext.excelparser.plugin:ExcelparserPlugin
+        dascheme=ckanext.dascheme.plugin:daschemePlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
