@@ -1,35 +1,144 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import logging
 
-def group_create(context, data_dict=None):
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    filename="log.log")
 
-    # Get the user name of the logged-in user.
-    user_name = context['user']
-
-    # Get a list of the members of the 'curators' group.
-    members = toolkit.get_action('member_list')(
-        data_dict={'id': 'curators', 'object_type': 'user'})
-
-    # 'members' is a list of (user_id, object_type, capacity) tuples, we're
-    # only interested in the user_ids.
-    member_ids = [member_tuple[0] for member_tuple in members]
-
-    # We have the logged-in user's user name, get their user id.
-    convert_user_name_or_id_to_id = toolkit.get_converter(
-        'convert_user_name_or_id_to_id')
-    user_id = convert_user_name_or_id_to_id(user_name, context)
-
-    # Finally, we can test whether the user is a member of the curators group.
-    if user_id in member_ids:
-        return {'success': True}
-    else:
-        return {'success': False,
-                'msg': 'Only curators are allowed to create groups'}
+keys_to_remove = [u'version', u'author', u'url', u'maintainer', u'author_email', u'maintainer_email', u'private']
 
 
-class ExcelparserPlugin(plugins.SingletonPlugin):
+class ExcelparserPlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm):
     # IAuthfunctions
-    plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IDatasetForm)
 
-    def get_auth_functions(self):
-        return {'group_create': group_create}
+    def is_fallback(self):
+        """
+        :return: Set ExcelParser as DefaultDataSetForm
+        """
+        return True
+
+    def create_package_schema(self):
+        """Return the schema for validating new dataset dicts.
+
+        CKAN will use the returned schema to validate and convert data coming
+        from users (via the dataset form or API) when creating new datasets,
+        before entering that data into the database.
+
+        If it inherits from ``ckan.plugins.toolkit.DefaultDatasetForm``, a
+        plugin can call ``DefaultDatasetForm``'s ``create_package_schema()``
+        method to get the default schema and then modify and return it.
+
+        CKAN's ``convert_to_tags()`` or ``convert_to_extras()`` functions can
+        be used to convert custom fields into dataset tags or extras for
+        storing in the database.
+
+        See ``ckanext/example_idatasetform`` for examples.
+
+        :returns: a dictionary mapping dataset dict keys to lists of validator
+          and converter functions to be applied to those keys
+        :rtype: dictionary
+        """
+        schema = super(ExcelparserPlugin, self).create_package_schema()
+        logger.debug(u"CREATE: Found Schema: {0}".format(schema))
+        schema.update({
+            'data_category': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
+        })
+
+        for key in keys_to_remove:
+            logger.debug("deleting key: {}".format(key))
+            del schema[key]
+
+        logger.debug(u"CREATE: Set Schema to: {0}".format(schema))
+        return schema
+
+    def update_package_schema(self):
+        """Return the schema for validating updated dataset dicts.
+
+        CKAN will use the returned schema to validate and convert data coming
+        from users (via the dataset form or API) when updating datasets, before
+        entering that data into the database.
+
+        If it inherits from ``ckan.plugins.toolkit.DefaultDatasetForm``, a
+        plugin can call ``DefaultDatasetForm``'s ``update_package_schema()``
+        method to get the default schema and then modify and return it.
+
+        CKAN's ``convert_to_tags()`` or ``convert_to_extras()`` functions can
+        be used to convert custom fields into dataset tags or extras for
+        storing in the database.
+
+        See ``ckanext/example_idatasetform`` for examples.
+
+        :returns: a dictionary mapping dataset dict keys to lists of validator
+          and converter functions to be applied to those keys
+        :rtype: dictionary
+
+        """
+        schema = super(ExcelparserPlugin, self).update_package_schema()
+
+        # Our custom field
+        logger.debug(u"UPDATE: Found Schema: {0}".format(schema))
+        schema.update({
+            'data_category': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
+        })
+        for key in keys_to_remove:
+            del schema[key]
+
+        logger.debug(u"UPDATE: Set Schema to: {0}".format(schema))
+        return schema
+
+    def show_package_schema(self):
+        """
+        Return a schema to validate datasets before they're shown to the user.
+
+        CKAN will use the returned schema to validate and convert data coming
+        from the database before it is returned to the user via the API or
+        passed to a template for rendering.
+
+        If it inherits from ``ckan.plugins.toolkit.DefaultDatasetForm``, a
+        plugin can call ``DefaultDatasetForm``'s ``show_package_schema()``
+        method to get the default schema and then modify and return it.
+
+        If you have used ``convert_to_tags()`` or ``convert_to_extras()`` in
+        your ``create_package_schema()`` and ``update_package_schema()`` then
+        you should use ``convert_from_tags()`` or ``convert_from_extras()`` in
+        your ``show_package_schema()`` to convert the tags or extras in the
+        database back into your custom dataset fields.
+
+        See ``ckanext/example_idatasetform`` for examples.
+
+        :returns: a dictionary mapping dataset dict keys to lists of validator
+          and converter functions to be applied to those keys
+        :rtype: dictionary
+
+        """
+
+        schema = super(ExcelparserPlugin, self).show_package_schema()
+
+        # Our custom field
+        schema.update({
+            'data_category': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        for key in keys_to_remove:
+            del schema[key]
+
+        logger.debug(u"Showing Schema: {0}".format(schema))
+        return schema
+
+    def package_types(self):
+        return []
+
+    # IConfigurer edits
+    plugins.implements(plugins.IConfigurer)
+
+    def update_config(self, config_):
+        toolkit.add_template_directory(config_, 'templates')
+        toolkit.add_public_directory(config_, 'public')
+        toolkit.add_resource('fanstatic', 'extrafields')
+

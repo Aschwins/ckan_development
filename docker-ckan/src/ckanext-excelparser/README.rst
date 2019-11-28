@@ -32,9 +32,8 @@
 ckanext-excelparser
 =============
 
-.. Put a description of your extension here:
-   What does it do? What features does it have?
-   Consider including some screenshots or embedding a video!
+This ckan extension recognizes when an excel file gets uploaded. It checks wether this excel file has multiple sheets.
+For each sheet it creates a seperate csv file and uploads the file to CKAN.
 
 
 ------------

@@ -1,0 +1,117 @@
+{'__before': [<function duplicate_extras_key at 0x7f3ed7f06140>, <function ignore at 0x7f3ed7f96f50>],
+  'maintainer': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  '__extras': [<function ignore at 0x7f3ed7f96f50>],
+  'relationships_as_object': {
+    'comment': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'object': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'state': [<function ignore at 0x7f3ed7f96f50>],
+    'type': [
+      <function not_empty at 0x7f3ed7f96d70>,
+      <OneOf object 64 list=[u'depends_on', u'dependency_of', u'derives_from', u'has_derivation', u'links_to', u'linked_from', u'child_of', u'parent_of']>
+    ],
+    'id': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'subject': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>]},
+  'tag_string': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function tag_string_convert at 0x7f3ed7f06398>],
+  'private': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function boolean_validator at 0x7f3ed7efb8c0>, <function datasets_with_no_organization_cannot_be_private at 0x7f3ed7f06c80>],
+  'maintainer_email': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function email_validator at 0x7f3ed7f07140>],
+  '__junk': [<function empty at 0x7f3ed7f96ed8>],
+  'id': [<function empty_if_not_sysadmin at 0x7f3ed7f070c8>, <function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function package_id_does_not_exist at 0x7f3ed7efbaa0>],
+  'owner_org': [<function owner_org_validator at 0x7f3ed7efb668>, <function unicode_safe at 0x7f3ed7f9d2a8>], 'title': [<function callable at 0x7f3ed2e0db18>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  'author_email': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function email_validator at 0x7f3ed7f07140>],
+  'state': [<function ignore_not_package_admin at 0x7f3ed7f06488>, <function ignore_missing at 0x7f3ed7f9d0c8>],
+  'version': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function package_version_validator at 0x7f3ed7f060c8>],
+  'license_id': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  'save': [<function ignore at 0x7f3ed7f96f50>],
+  'type': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  'resources': {
+    '__extras': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function extras_unicode_convert at 0x7f3ed7a63668>, <function keep_extras at 0x7f3ed7f96c80>],
+    'package_id': [<function ignore at 0x7f3ed7f96f50>],
+    'datastore_active': [<function ignore_missing at 0x7f3ed7f9d0c8>],
+    'id': [<function ignore_empty at 0x7f3ed7f9d140>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'size': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function int_validator at 0x7f3ed7efb758>],
+    'cache_last_updated': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function isodate at 0x7f3ed7efb938>],
+    'state': [<function ignore at 0x7f3ed7f96f50>], 'hash': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'description': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'format': [<function if_empty_guess_format at 0x7f3ed7f06d70>, <function ignore_missing at 0x7f3ed7f9d0c8>, <function clean_format at 0x7f3ed7f06de8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'tracking_summary': [<function ignore_missing at 0x7f3ed7f9d0c8>],
+    'last_modified': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function isodate at 0x7f3ed7efb938>],
+    'url_type': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'mimetype': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'cache_url': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'name': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'created': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function isodate at 0x7f3ed7efb938>],
+    'url': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function remove_whitespace at 0x7f3ed7a63aa0>],
+    'mimetype_inner': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'position': [<function ignore at 0x7f3ed7f96f50>],
+    'revision_id': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'resource_type': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  },
+  'custom_text': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function convert_to_extras at 0x7f3ed7f07848>],
+  'tags': {
+    'revision_timestamp': [<function ignore at 0x7f3ed7f96f50>],
+    'vocabulary_id': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function vocabulary_id_exists at 0x7f3ed7f069b0>],
+    'state': [<function ignore at 0x7f3ed7f96f50>],
+    'display_name': [<function ignore at 0x7f3ed7f96f50>],
+    'name': [<function not_missing at 0x7f3ed7f96cf8>, <function not_empty at 0x7f3ed7f96d70>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function tag_length_validator at 0x7f3ed7f06230>, <function tag_name_validator at 0x7f3ed7f062a8>],
+  },
+  'groups': {
+    '__extras': [<function ignore at 0x7f3ed7f96f50>],
+    'title': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'id': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'name': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  },
+  'log_message': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function no_http at 0x7f3ed7efb9b0>],
+  'return_to': [<function ignore at 0x7f3ed7f96f50>],
+  'relationships_as_subject': {
+    'comment': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'object': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'state': [<function ignore at 0x7f3ed7f96f50>],
+    'type': [<function not_empty at 0x7f3ed7f96d70>, <OneOf object 65 list=[u'depends_on', u'dependency_of', u'derives_from', u'has_derivation', u'links_to', u'linked_from', u'child_of', u'parent_of']>],
+    'id': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'subject': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  },
+  'name': [<function not_empty at 0x7f3ed7f96d70>, <function unicode_safe at 0x7f3ed7f9d2a8>, <function name_validator at 0x7f3ed7efbf50>, <function package_name_validator at 0x7f3ed7f06050>],
+  'url': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  'notes': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  'author': [<function ignore_missing at 0x7f3ed7f9d0c8>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+  'extras': {
+    '__extras': [<function ignore at 0x7f3ed7f96f50>],
+    'deleted': [<function ignore_missing at 0x7f3ed7f9d0c8>],
+    'value': [<function not_missing at 0x7f3ed7f96cf8>],
+    'revision_timestamp': [<function ignore at 0x7f3ed7f96f50>],
+    'state': [<function ignore at 0x7f3ed7f96f50>],
+    'key': [<function not_empty at 0x7f3ed7f96d70>, <function extra_key_not_in_root_schema at 0x7f3ed7f07050>, <function unicode_safe at 0x7f3ed7f9d2a8>],
+    'id': [<function ignore at 0x7f3ed7f96f50>]},
+  'revision_id': [<function ignore at 0x7f3ed7f96f50>],
+}
+
+{#
+  {% block package_basic_fields_license %}
+  <div class="form-group">
+    {% set error = errors.license_id %}
+    <label class="control-label" for="field-license">{{ _("License") }}</label>
+    <div class="controls">
+      <div class="row">
+        <div class="col-md-6">
+          <select id="field-license" name="license_id" data-module="autocomplete">
+            {% set existing_license_id = data.get('license_id') %}
+            {% for license_id, license_desc in h.license_options(existing_license_id) %}
+            <option value="{{ license_id }}" {% if existing_license_id == license_id %}selected="selected"{% endif %}>{{ license_desc }}</option>
+            {% endfor %}
+          </select>
+          {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
+        </div>
+        <div class="col-md-6">
+          <span class="info-block info-inline">
+            <i class="fa fa-info-circle"></i>
+            {% trans %}
+            License definitions and additional information can be found
+            at <a href="http://opendefinition.org/licenses/">opendefinition.org</a>
+            {% endtrans %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+ #}
