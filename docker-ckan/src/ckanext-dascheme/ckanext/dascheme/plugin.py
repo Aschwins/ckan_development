@@ -75,7 +75,7 @@ class daschemePlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm
         :rtype: dictionary
         """
         schema = super(daschemePlugin, self).create_package_schema()
-        logger.debug(u"CREATE: Found Schema: {0}".format(schema))
+        logger.debug(u"CREATE: Found Schema:")
         schema.update({
             'data_category': [toolkit.get_validator('ignore_missing'),
                             toolkit.get_converter('convert_to_extras')]
@@ -85,7 +85,7 @@ class daschemePlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm
             logger.debug("deleting key: {}".format(key))
             del schema[key]
 
-        logger.debug(u"CREATE: Set Schema to: {0}".format(schema))
+        logger.debug(u"CREATE: Set Schema to: ")
         return schema
 
     def update_package_schema(self):
@@ -113,7 +113,7 @@ class daschemePlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm
         schema = super(daschemePlugin, self).update_package_schema()
 
         # Our custom field
-        logger.debug(u"UPDATE: Found Schema: {0}".format(schema))
+        logger.debug(u"UPDATE: Found Schema: ")
         schema.update({
             'data_category': [toolkit.get_validator('ignore_missing'),
                             toolkit.get_converter('convert_to_extras')]
@@ -121,7 +121,7 @@ class daschemePlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm
         for key in keys_to_remove:
             del schema[key]
 
-        logger.debug(u"UPDATE: Set Schema to: {0}".format(schema))
+        logger.debug(u"UPDATE: Set Schema to: ")
         return schema
 
     def show_package_schema(self):
@@ -160,7 +160,7 @@ class daschemePlugin(plugins.SingletonPlugin, plugins.toolkit.DefaultDatasetForm
         for key in keys_to_remove:
             del schema[key]
 
-        logger.debug(u"Showing Schema: {0}".format(schema))
+        logger.debug(u"Showing Schema: ")
         return schema
 
     def package_types(self):
