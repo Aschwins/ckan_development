@@ -2,11 +2,10 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import logging
 import requests
-import ckanext.datapusher.interfaces as interfaces
 import os
 import threading
 
-from ckan.common import config
+from ckan.common import config, c
 
 # Logger settings.
 logger = logging.getLogger(__name__)
@@ -29,26 +28,23 @@ def download_file(url, filepath_to_store_file):
 
 def create_resource(filepath, package_id, api_key):
     logger.debug("CREATING RESOURCE THROUGH THE API.")
-    logger.debug("FILEPATH: {0}".format(filepath))
-    # package_id = "3c9e9592-2ba3-4e3e-b9d3-669125573108"
-    logger.debug("PACKAGE_ID: {0}".format(package_id))
-    logger.debug("API_KEY: {0}".format(api_key))
-    cwd = os.getcwd()
-    ls = os.listdir(cwd)
-    logger.debug("CWD: {0}".format(cwd))
-    logger.debug("LISTDIR: {0}".format(ls))
     with open(filepath, 'rb') as f:
-        logger.debug("OPENING FILE...")
         files = {"upload": f}
         values = {"package_id": package_id}
         headers = {"Authorization": api_key}
         api_url = "{0}/api/action/resource_create".format(SITE_URL)
-        logger.debug("POST VARIABLES SET.")
-        logger.debug("API_URL {0}".format(api_url))
         r = requests.post(api_url, files=files, data=values, headers=headers)
         logger.debug("Request response: {0}".format(r.content))
 
     logger.debug("\n Created resource...")
+    delete_file(filepath)
+
+
+def delete_file(filepath):
+    if os.path.exists(filepath):
+        os.remove(filepath)
+    else:
+        logger.debug("File doesn't exist.")
 
 
 class PackagerPlugin(plugins.SingletonPlugin):
@@ -98,8 +94,6 @@ class PackagerPlugin(plugins.SingletonPlugin):
         # Upload the csvs as resources to this dataset.
         # Done
 
-
-
     def after_delete(self, context, pkg_dict):
         u'''
             Extensions will receive the data dict (tipically containing
@@ -114,9 +108,7 @@ class PackagerPlugin(plugins.SingletonPlugin):
             is ready for display (Note that the read method will return a
             package domain object, which may not include all fields).
         '''
-        logger.debug("AFTER_SHOW: context: {0}\n pkg_dict: {1}".format(context, pkg_dict))
-
-
+        logger.debug("AFTER_SHOW")
         pass
 
     def before_search(self, search_params):
@@ -169,11 +161,8 @@ class PackagerPlugin(plugins.SingletonPlugin):
              displayed. The dictionary passed will be the one that gets
              sent to the template.
         '''
-        logger.debug("BEFORE VIEW \n pkg_dict: {0}".format(pkg_dict))
-        # logger.debug("AFTER_UPDATE: context: {0}\n pkg_dict: {1}".format(context, pkg_dict))
-
-        # api_key = context.get("auth_user_obj").apikey
-        api_key = "d71874a1-9551-4d1b-a868-04e666777cf7"
+        logger.debug("BEFORE VIEW")
+        api_key = c.get("userobj").apikey
         resources = pkg_dict.get("resources")
 
         if (len(resources) == 1) & (pkg_dict.get("data_category") == u"px_abundancies"):

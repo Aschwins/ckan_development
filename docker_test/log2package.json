@@ -1,0 +1,207 @@
+entity: <
+Package id=11c6b383-a914-4bca-a628-1ff1b245cce1
+name=aaa
+title=aaa
+version=None
+url=None
+author=None
+author_email=None
+maintainer=None
+maintainer_email=None
+notes=aaa
+license_id=cc-by
+type=dataset
+owner_org=47e2fbb1-512a-420d-8843-da3330f3f561
+creator_user_id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f
+metadata_created=2019-12-02 08:33:35.357812
+metadata_modified=2019-12-02 08:33:35.357820
+private=False
+state=draft
+revision_id=e7e8c040-2539-4b25-9d85-4473b0757420>
+
+FTER_CREATE:
+context:
+{'allow_state_change': True,
+'allow_partial_update': True,
+'auth_user_obj':
+  <User id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f name=ckan_admin password=$pbkdf2-sha512$25000$CgGgtLZWSomxNkZobQ3BOA$RNICwVpPZydzeJ2wHxGtvfDigkKdA41XalfMBlLH1bU/4ua4BhnzWzGwdysUjBO1dI6BZaVIxxPTnjCNwnhJiw fullname=None email=your_email@example.com apikey=d71874a1-9551-4d1b-a868-04e666777cf7 created=2019-12-02 08:29:46.829244 reset_key=None about=None activity_streams_email_notifications=False sysadmin=True state=active>,
+'__auth_user_obj_checked': True,
+'session': <sqlalchemy.orm.scoping.scoped_session object at 0x7fdb4cd6f150>,
+'user': u'ckan_admin',
+'__auth_audit': [],
+'model': <module 'ckan.model' from '/srv/app/src/ckan/ckan/model/__init__.pyc'>,
+'save': True, 'message': ''}
+
+ pkg_dict:
+{
+'groups':
+  [{'id': u'47e2fbb1-512a-420d-8843-da3330f3f561'}],
+'name': u'aaa',
+'title': u'aaa',
+'notes': u'aaa',
+'owner_org': u'47e2fbb1-512a-420d-8843-da3330f3f561',
+'id': '11c6b383-a914-4bca-a628-1ff1b245cce1',
+'state': 'draft',
+'extras':
+  [{'value': u'px_abundancies', 'key': 'data_category'}],
+'data_category': u'px_abundancies',
+'creator_user_id': u'ef32a4d0-3b22-4ce8-8b3b-9750da94854f',
+'license_id': u'cc-by',
+'type': u'dataset',
+'tag_string': u'aaa',
+'tags': [{'name': u'aaa'}, {'name': u'aaa'}]}
+
+AFTERSHOW
+{
+'license_title': u'Creative Commons Attribution',
+'maintainer': None,
+'relationships_as_object': [],
+'private': False,
+'maintainer_email': None,
+'num_tags': 1,
+'id': u'11c6b383-a914-4bca-a628-1ff1b245cce1',
+'metadata_created': '2019-12-02T08:33:35.357812',
+'metadata_modified': '2019-12-02T08:33:35.357820',
+'author': None,
+'author_email': None,
+'state': u'draft',
+'version': None,
+'creator_user_id': u'ef32a4d0-3b22-4ce8-8b3b-9750da94854f',
+'type': u'dataset',
+'resources': [],
+'num_resources': 0,
+'tags':
+[{'vocabulary_id': None, 'state': u'active', 'display_name': u'aaa', 'id': u'44ce03e5-c75e-4f7c-8e6b-db251ce61cdf', 'name': u'aaa'}],
+'groups': [], 'license_id': u'cc-by', 'relationships_as_subject': [],
+'organization':
+  {'description': u'A biotech firm', 'title': u'DSM', 'created': '2019-12-02T08:32:14.454485', 'approval_status': u'approved', 'is_organization': True, 'state': u'active', 'image_url': u'2019-12-02-083214.435108DSMLOGO420220.jpg', 'revision_id': u'528667ed-3ed3-4ad0-a21c-3db31ee6dc0d', 'type': u'organization', 'id': u'47e2fbb1-512a-420d-8843-da3330f3f561', 'name': u'dsm'},
+'name': u'aaa', 'isopen': True, 'url': None, 'notes': u'aaa',
+'owner_org': u'47e2fbb1-512a-420d-8843-da3330f3f561', '5-9d85-4473b0757420'}
+u'active', 'value': u'px_abundancies', 'package_id': u'11c6b383-a914-4bca-a628-1ff1b245cce1', 'key': u'data_category', 'revision_id': u'e7e8c040-2539-4b25-9d85-4473b0757420', 'id': u'22f3a867-446d-4051-806c-50278efb3bbc'}],
+'license_url': u'http
+
+
+
+context:
+{
+'allow_state_change'
+}: True, 'use_cache': False, 'metadata_modified': '',
+'package': <Package id=11c6b383-a914-4bca-a628-1ff1b245cce1 name=aaa title=aaa version=None url=None author=None author_email=None maintainer=None maintainer_email=None notes=aaa license_id=cc-by type=dataset owner_org=47e2fbb1-512a-420d-8843-da3330f3f561 creator_user_id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f metadata_created=2019-12-02 08:33:35.357812 metadata_modified=2019-12-02 08:34:13.029193 private=False state=active revision_id=f20ec654-8fbd-45a3-bc3a-48eac4705cfc>, 'auth_user_obj': <User id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f name=ckan_admin password=$pbkdf2-sha512$25000$CgGgtLZWSomxNkZobQ3BOA$RNICwVpPZydzeJ2wHxGtvfDigkKdA41XalfMBlLH1bU/4ua4BhnzWzGwdysUjBO1dI6BZaVIxxPTnjCNwnhJiw fullname=None email=your_email@example.com apikey=d71874a1-9551-4d1b-a868-04e666777cf7 created=2019-12-02 08:29:46.829244 reset_key=None about=None activity_streams_email_notifications=False sysadmin=True state=active>, '__auth_user_obj_checked': True, 'with_capacity': False, 'ignore_auth': True, 'session': <sqlalchemy.orm.scoping.scoped_session object at 0x7fdb4cd6f150>, 'user': u'ckan_admin', '__auth_audit': [], 'model': <module 'ckan.model' from '/srv/app/src/ckan/ckan/model/__init__.pyc'>}
+ pkg_dict:
+{'owner_org': u'47e2fbb1-512a-420d-8843-da3330f3f561',
+'relationships_as_object': [], 'num_tags': 1,
+'id': u'11c6b383-a914-4bca-a628-1ff1b245cce1', 'metadata_created': '2019-12-02T08:33:35.357812',
+'metadata_modified': '2019-12-02T08:34:13.029193',
+'title': u'aaa', 'state': u'active',
+'license_id': u'cc-by', 'type': u'dataset',
+'resources':
+  [{'cache_last_updated': None,
+  'cache_url': None, 'mimetype_inner': None, 'hash': u'', 'description': u'aaa',
+  'format': u'XML',
+  'url': u'http://localhost:5000/dataset/11c6b383-a914-4bca-a628-1ff1b245cce1/resource/8935a2cf-e587-4299-b5aa-d94cb40029f6/download/excel2.xlsx',
+  'created': '2019-12-02T08:34:12.857943',
+  'state': u'active',
+  'package_id': u'11c6b383-a914-4bca-a628-1ff1b245cce1',
+  'last_modified': '2019-12-02T08:34:12.828242',
+  'mimetype': u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'url_type': u'upload',
+  'position': 0,
+  'revision_id': u'f20ec654-8fbd-45a3-bc3a-48eac4705cfc',
+  'size': 9890L, u'datastore_active': False,
+  'id': u'8935a2cf-e587-4299-b5aa-d94cb40029f6',
+  'resource_type': None, 'name': u'aaa'}],
+'num_resources': 1,
+'tags':
+  [{'vocabulary_id': None, 'state': u'active', 'display_name': u'aaa', 'id': u'44ce03e5-c75e-4f7c-8e6b-db251ce61cdf', 'name': u'aaa'}],
+'groups': [],
+'creator_user_id': u'ef32a4d0-3b22-4ce8-8b3b-9750da94854f',
+'relationships_as_subject': [], 'name': u'aaa', 'isopen': True,
+'notes': u'aaa', 'license_title': u'Creative Commons Attribution',
+'license_url': u'http://www.opendefinition.org/licenses/cc-by',
+'data_category': u'px_abundancies',
+'organization':
+  {'description': u'A biotech firm', 'title': u'DSM', 'created': '2019-12-02T08:32:14.454485', 'approval_status': u'approved', 'is_organization': True,
+  'state': u'active', 'image_url': u'2019-12-02-083214.435108DSMLOGO420220.jpg',
+  'revision_id': u'528667ed-3ed3-4ad0-a21c-3db31ee6dc0d', 'type': u'organization',
+  'id': u'47e2fbb1-512a-420d-8843-da3330f3f561', 'name': u'dsm'},
+'revision_id': u'f20ec654-8fbd-45a3-bc3a-48eac4705cfc'}
+
+
+'data_dict':
+'{"license_title":
+"Creative Commons Attribution",
+"maintainer": null,
+"relationships_as_object": [],
+"private": false,
+"maintainer_email": null,
+"num_tags": 1,
+"id": "11c6b383-a914-4bca-a628-1ff1b245cce1",
+"metadata_created": "2019-12-02T08:33:35.357812",
+"metadata_modified": "2019-12-02T08:34:13.029193",
+"author": null,
+"author_email": null,
+"state": "active",
+"version": null,
+"creator_user_id": "ef32a4d0-3b22-4ce8-8b3b-9750da94854f",
+"type": "dataset",
+"resources":
+  [{
+  "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "cache_url": null,
+  "state": "active",
+  "hash": "",
+  "description": "aaa",
+  "format": "XML",
+  "url": "http://localhost:5000/dataset/11c6b383-a914-4bca-a628-1ff1b245cce1/resource/8935a2cf-e587-4299-b5aa-d94cb40029f6/download/excel2.xlsx",
+  "datastore_active": false,
+  "created": "2019-12-02T08:34:12.857943",
+  "cache_last_updated": null,
+  "package_id": "11c6b383-a914-4bca-a628-1ff1b245cce1",
+  "mimetype_inner": null,
+  "last_modified": "2019-12-02T08:34:12.828242",
+  "position": 0,
+  "revision_id": "f20ec654-8fbd-45a3-bc3a-48eac4705cfc",
+  "size": 9890,
+  "url_type": "upload",
+  "id": "8935a2cf-e587-4299-b5aa-d94cb40029f6",
+  "resource_type": null, "name": "aaa"}],
+"num_resources": 1,
+"tags":
+  [{"vocabulary_id": null, "state": "active", "display_name": "aaa",
+  "id": "44ce03e5-c75e-4f7c-8e6b-db251ce61cdf", "name": "aaa"}],
+"groups": [], "license_id": "cc-by", "relationships_as_subject": [],
+"organization":
+  {
+  "description": "A biotech firm", "title": "DSM", "created": "2019-12-02T08:32:14.454485",
+  "approval_status": "approved", "is_organization": true, "state": "active",
+  "image_url": "2019-12-02-083214.435108DSMLOGO420220.jpg",
+  "revision_id": "528667ed-3ed3-4ad0-a21c-3db31ee6dc0d", "type": "organization",
+  "id": "47e2fbb1-512a-420d-8843-da3330f3f561", "name": "dsm"},
+  "name": "aaa", "isopen": true, "url": null, "notes": "aaa",
+"owner_org": "47e2fbb1-512a-420d-8843-da3330f3f561",
+"extras":
+  [{"state": "active", "value": "px_abundancies",
+  "package_id": "11c6b383-a914-4bca-a628-1ff1b245cce1",
+  "key": "data_category", "revision_id": "e7e8c040-2539-4b25-9d85-4473b0757420",
+  "id": "22f3a867-446d-4051-806c-50278efb3bbc"}],
+"license_url": "http://www.opendefinition.org/licenses/cc-by",
+"title": "aaa", "revision_id": "f20ec654-8fbd-45a3-bc3a-48eac4705cfc"}'
+
+, 'site_id': 'default', 'private': False, 'maintainer_email': None, 'num_tags': 1, 'views_total': 0, 'views_recent': 0, 'id': u'11c6b383-a914-4bca-a628-1ff1b245cce1', 'metadata_created': '2019-12-02T08:33:35.357812Z', 'res_type': [None], 'capacity': 'public', 'metadata_modified': '2019-12-02T08:34:13.029193Z', 'author': None, 'author_email': None, 'res_format': [u'XML'], 'extras_data_category': u'px_abundancies', 'state': u'active', 'version': None, 'creator_user_id': u'ef32a4d0-3b22-4ce8-8b3b-9750da94854f', 'res_url': ['http://localhost:5000/dataset/11c6b383-a914-4bca-a628-1ff1b245cce1/resource/8935a2cf-e587-4299-b5aa-d94cb40029f6/download/excel2.xlsx'], 'type': u'dataset', 'entity_type': 'package', 'num_resources': 1, 'title_string': u'aaa', 'tags': [u'aaa'], 'title': u'aaa', 'dataset_type': u'dataset', 'groups': [], 'license_id': u'cc-by', 'validated_data_dict': '{"owner_org": "47e2fbb1-512a-420d-8843-da3330f3f561", "relationships_as_object": [], "num_tags": 1, "id": "11c6b383-a914-4bca-a628-1ff1b245cce1", "metadata_created": "2019-12-02T08:33:35.357812", "metadata_modified": "2019-12-02T08:34:13.029193", "title": "aaa", "state": "active", "license_id": "cc-by", "type": "dataset", "resources": [{"cache_last_updated": null, "cache_url": null, "mimetype_inner": null, "hash": "", "description": "aaa", "format": "XML", "url": "http://localhost:5000/dataset/11c6b383-a914-4bca-a628-1ff1b245cce1/resource/8935a2cf-e587-4299-b5aa-d94cb40029f6/download/excel2.xlsx", "created": "2019-12-02T08:34:12.857943", "state": "active", "package_id": "11c6b383-a914-4bca-a628-1ff1b245cce1", "last_modified": "2019-12-02T08:34:12.828242", "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "url_type": "upload", "position": 0, "revision_id": "f20ec654-8fbd-45a3-bc3a-48eac4705cfc", "size": 9890, "datastore_active": false, "id": "8935a2cf-e587-4299-b5aa-d94cb40029f6", "resource_type": null, "name": "aaa"}], "num_resources": 1, "tags": [{"vocabulary_id": null, "state": "active", "display_name": "aaa", "id": "44ce03e5-c75e-4f7c-8e6b-db251ce61cdf", "name": "aaa"}], "groups": [], "creator_user_id": "ef32a4d0-3b22-4ce8-8b3b-9750da94854f", "relationships_as_subject": [], "name": "aaa", "isopen": true, "notes": "aaa", "license_title": "Creative Commons Attribution", "license_url": "http://www.opendefinition.org/licenses/cc-by", "data_category": "px_abundancies", "organization": {"description": "A biotech firm", "title": "DSM", "created": "2019-12-02T08:32:14.454485", "approval_status": "approved", "is_organization": true, "state": "active", "image_url": "2019-12-02-083214.435108DSMLOGO420220.jpg", "revision_id": "528667ed-3ed3-4ad0-a21c-3db31ee6dc0d", "type": "organization", "id": "47e2fbb1-512a-420d-8843-da3330f3f561", "name": "dsm"}, "revision_id": "f20ec654-8fbd-45a3-bc3a-48eac4705cfc"}', 'res_name': [u'aaa'], 'name': u'aaa', 'isopen': True, 'url': None, 'notes': u'aaa', 'license_title': u'Creative Commons Attribution', 'license_url': u'http://www.opendefinition.org/licenses/cc-by', 'data_category': u'px_abundancies', 'organization': u'dsm', 'revision_id': u'f20ec654-8fbd-45a3-bc3a-48eac4705cfc', 'index_id': 'eebd81d4487efcc289d7da9c94ee7590'}
+
+2019-12-02 13:25:56,740 DEBUG [ckanext.packager.plugin] G:
+<pylons.util.AttribSafeContextObj at 0x7f4748997790 action=u'new_resource',
+author=u'ckan_admin', controller=u'package',
+environ={'AUTH_TYPE': 'cookie', 'routes.route': <routes.route.Route ... br'},
+id=u'eee', language='en',
+pylons=<pylons.util.PylonsContext object at 0x7f47489976d0>,
+remote_addr='172.20.0.1', start_response=<function repl_start_response at 0x7f4748a5dcf8>,
+user=u'ckan_admin', userobj=<User id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f name=ckan_admi...tive>>
+
+2019-12-02 13:25:56,741 DEBUG [ckanext.packager.plugin] C:
+<pylons.util.AttribSafeContextObj at 0x7f4748997790 action=u'new_resource',
+author=u'ckan_admin', controller=u'package', environ={'AUTH_TYPE': 'cookie',
+'routes.route': <routes.route.Route ... br'}, id=u'eee', language='en',
+pylons=<pylons.util.PylonsContext object at 0x7f47489976d0>,
+remote_addr='172.20.0.1', start_response=<function repl_start_response at 0x7f4748a5dcf8>,
+user=u'ckan_admin', userobj=<User id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f name=ckan_admi...tive>>
