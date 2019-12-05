@@ -3,8 +3,9 @@ import ckan.plugins.toolkit as toolkit
 import logging
 import requests
 import os
-import threading
 
+from xlrd import open_workbook
+import csv
 from ckan.common import config, c
 
 # Logger settings.
@@ -15,22 +16,23 @@ logging.basicConfig(
     filename="log.log")
 
 # Global variables
-SITE_URL = config.get('ckan.site_url', None)
-logger.debug("SET SITE_URL TO: {0}".format(SITE_URL))
+SITE_URL = config.get('ckan.site_url', None) # Does not end in /
+API_KEY = "11ca6e7e-ce8d-4e5b-94ec-f9fc0f5579e8"
 
 
 def download_file(url, filepath_to_store_file):
     request = requests.get(url, allow_redirects=True)
+    logger.debug(request.content)
     open(filepath_to_store_file, 'wb').write(request.content)
     logger.debug("DOWNLOADED FILE in {0}".format(filepath_to_store_file))
     return filepath_to_store_file
 
 
-def create_resource(filepath, package_id, api_key):
+def create_resource(filepath, package_id, api_key, name="Default"):
     logger.debug("CREATING RESOURCE THROUGH THE API.")
     with open(filepath, 'rb') as f:
         files = {"upload": f}
-        values = {"package_id": package_id}
+        values = {"package_id": package_id, "name": name}
         headers = {"Authorization": api_key}
         api_url = "{0}/api/action/resource_create".format(SITE_URL)
         r = requests.post(api_url, files=files, data=values, headers=headers)
@@ -38,6 +40,7 @@ def create_resource(filepath, package_id, api_key):
 
     logger.debug("\n Created resource...")
     delete_file(filepath)
+    return r.status_code
 
 
 def delete_file(filepath):
@@ -45,6 +48,35 @@ def delete_file(filepath):
         os.remove(filepath)
     else:
         logger.debug("File doesn't exist.")
+
+
+def excel_to_csv(filepath, outputpath):
+    """
+    Takes an excel in filepath and spits out csvs for every sheet in the excel in the outputpath.
+    :return a list of filepaths of the csvs.
+    """
+    logger.debug("Filepath: {0}".format(filepath))
+    wb = open_workbook(filepath)
+    filename = filepath.split('/')[-1].split('.')[0]
+
+    logger.debug("Found a workbook: {0}".format(wb))
+    result = []
+
+    for i in range(wb.nsheets):
+        sheet = wb.sheet_by_index(i)
+        file_location_filename = "{0}/{1}_{2}.csv".format(outputpath, filename, sheet.name)
+        result.append(file_location_filename)
+        logger.debug("New file location filename: {0}".format(file_location_filename))
+        with open(file_location_filename, "w") as f:
+            writer = csv.writer(f, delimiter=",")
+            header = [cell.value for cell in sheet.row(0)]
+            writer.writerow(header)
+            for row_idx in range(1, sheet.nrows):
+                row = [cell.value for cell in sheet.row(row_idx)]
+                writer.writerow(row)
+
+    logger.debug("Created csvs in : {0}".format(result))
+    return result
 
 
 class PackagerPlugin(plugins.SingletonPlugin):
@@ -91,8 +123,7 @@ class PackagerPlugin(plugins.SingletonPlugin):
             has been updated (Note that the edit method will return a package
             domain object, which may not include all fields).
         '''
-        # Upload the csvs as resources to this dataset.
-        # Done
+        pass
 
     def after_delete(self, context, pkg_dict):
         u'''
@@ -157,12 +188,11 @@ class PackagerPlugin(plugins.SingletonPlugin):
 
     def before_view(self, pkg_dict):
         u'''
-             Extensions will recieve this before the dataset gets
-             displayed. The dictionary passed will be the one that gets
-             sent to the template.
+            Before a dataset get's displayed a check is done on the dataset.
+            If Prepocessing steps have to be taken for the dataset they are done.
         '''
         logger.debug("BEFORE VIEW")
-        api_key = c.get("userobj").apikey
+
         resources = pkg_dict.get("resources")
 
         if (len(resources) == 1) & (pkg_dict.get("data_category") == u"px_abundancies"):
@@ -171,22 +201,22 @@ class PackagerPlugin(plugins.SingletonPlugin):
                 if pkg_dict.get("resources")[i].get("format") in ("xlsx", "XLSX"):
                     logger.debug("EXCEL FILE FOUND.")
                     url = pkg_dict.get("resources")[i].get("url")
-                    resource_id = pkg_dict.get("resources")[i].get("id")
+                    # resource_id = pkg_dict.get("resources")[i].get("id")
                     package_id = pkg_dict.get("resources")[i].get("package_id")
-                    xlsx_url = "{}/dataset/{}/resource/{}/download/{}".format(
-                        SITE_URL,
-                        package_id, resource_id, url)
-                    logger.debug("XLSX url: {0}".format(xlsx_url))
-
+                    # xlsx_url = "{}/dataset/{}/resource/{}/download/{}".format(SITE_URL, package_id, resource_id, url)
+                    # logger.debug("XLSX url {}".format(xlsx_url))
+                    logger.debug("url: {}".format(url))
                     # Download excel
                     logger.debug("CREATING NEW EXCEL...")
-                    filepath_download = download_file(xlsx_url, "new_excel.xlsx")
+                    filepath_download = download_file(url, "new_excel.xlsx")
 
-                    # Upload Excel Under Different Name and wait
-                    thread = threading.Thread(target=create_resource, args=(filepath_download, package_id, api_key))
-                    thread.start()
-                    logger.debug("Started Thread, now waiting on create_resource...")
-                    thread.join()
-                    logger.debug("SUCCES = ")
+                    # Convert excel file to seperate csv's
+                    csv_filepaths = excel_to_csv(filepath_download, os.getcwd())
+                    logger.debug("csv_filepaths: {}".format(csv_filepaths))
+                    # # Upload Excel Under Different Name
+                    for csv_filepath in csv_filepaths:
+                        csv_filename = os.path.basename(csv_filepath)
+                        status_code = create_resource(csv_filepath, package_id, API_KEY, name=csv_filename)
+                        logger.debug("SUCCES = {0}".format(status_code))
 
         return pkg_dict
