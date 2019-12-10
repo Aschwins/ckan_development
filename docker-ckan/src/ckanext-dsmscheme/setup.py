@@ -10,22 +10,22 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-dascheme''',
+    name='''ckanext-dsmscheme''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.1',
 
-    description='''A CKAN extension which parses excel file uploads and converts them to csv's per sheet.''',
+    description='''Dataset scheming for dsm''',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/Aschwins/ckanext-dascheme',
+    url='https://github.com/aschwins/ckanext-dsmscheme',
 
     # Author details
-    author='''Aschwin Schilperoort''',
-    author_email='''aschwin.schilperoort@dsm.com''',
+    author='''aschwin''',
+    author_email='''''',
 
     # Choose your license
     license='AGPL',
@@ -48,7 +48,7 @@ setup(
 
 
     # What does your project relate to?
-    keywords='''CKAN excel parser csv''',
+    keywords='''CKAN''',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -80,7 +80,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        dascheme=ckanext.dascheme.plugin:daschemePlugin
+        dsmscheme=ckanext.dsmscheme.plugin:DsmschemePlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

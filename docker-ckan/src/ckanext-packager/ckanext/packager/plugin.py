@@ -1,13 +1,12 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.common import config
 import logging
 import requests
 import os
 
 from xlrd import open_workbook
-import csv
 import pandas as pd
-from ckan.common import config, c
 
 # Logger settings.
 logger = logging.getLogger(__name__)
@@ -17,19 +16,31 @@ logging.basicConfig(
     filename="log.log")
 
 # Global variables
-SITE_URL = config.get('ckan.site_url', None) # Does not end in /
-API_KEY = "11ca6e7e-ce8d-4e5b-94ec-f9fc0f5579e8"
+SITE_URL = config.get('ckan.site_url', None)  # Does not end in /
 
 
 def download_file(url, filepath_to_store_file):
     request = requests.get(url, allow_redirects=True)
-    logger.debug(request.content)
     open(filepath_to_store_file, 'wb').write(request.content)
     logger.debug("DOWNLOADED FILE in {0}".format(filepath_to_store_file))
     return filepath_to_store_file
 
 
+def get_user_api_key():
+    cntxt = toolkit.c
+    return cntxt.userobj.apikey
+
+
 def create_resource(filepath, package_id, api_key, name="Default"):
+    """
+    Function to create a resource via the API. Could maybe also be done with ckan.action function.
+    TODO: Should be able to handle a lot more: minimum is data category included.
+    :param filepath:
+    :param package_id:
+    :param api_key:
+    :param name:
+    :return:
+    """
     logger.debug("CREATING RESOURCE THROUGH THE API.")
     with open(filepath, 'rb') as f:
         files = {"upload": f}
@@ -72,6 +83,51 @@ def excel_to_csv(filepath, outputpath):
     return result
 
 
+def preprocess_px_abundancies(resource):
+    """
+    The preprocessing pipeline for a px_abundancies file. This function calls excel_to_csv to convert the sheets
+    in the excel to seperate csvs. Then it uploads the csvs to CKAN with the api. Then deletes the csvs.
+    """
+    filename = resource.get("name")
+    url = resource.get("url")
+    package_id = resource.get("package_id")
+    API_KEY = get_user_api_key()
+
+    # Download excel
+    logger.debug("CREATING NEW EXCEL...")
+    filepath_download = download_file(url, filename)
+
+    # Convert excel file to seperate csv's
+    csv_filepaths = excel_to_csv(filepath_download, os.getcwd())
+    logger.debug("csv_filepaths: {}".format(csv_filepaths))
+
+    # # Upload Excel Under Different Name
+    for csv_filepath in csv_filepaths:
+        csv_filename = os.path.basename(csv_filepath)
+        status_code = create_resource(csv_filepath, package_id, API_KEY, name=csv_filename)
+        delete_file(csv_filepath)
+        logger.debug("SUCCES = {0}".format(status_code))
+
+    delete_file(filepath_download)
+
+
+def preprocessing_pipeline(resources):
+    """
+    The Preprocessing pipeline for all resources. If a resource needs preprocessing it should be called within this
+    function.
+    """
+    for resource in resources:
+        if (resource.get("data_category") == "px_abundancies") & (resource.get('preprocessing_done') != 'True'):
+            preprocess_px_abundancies(resource)
+            id = resource.get('id')
+            toolkit.get_action('resource_patch')({}, {'id': id, 'preprocessing_done': 'True'})
+            #ckan.logic.action.update.resource_update(context, data_dict)
+            #ckan.logic.action.patch.resource_patch(context, data_dict)
+
+    # Above should should be rewritten so it handles the pipelines for each data category. Which means for each
+    # category it should check if it has a preprocessing pipeline, done yes or no, do it yes or no.
+
+
 class PackagerPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IPackageController, inherit=True)
 
@@ -85,29 +141,8 @@ class PackagerPlugin(plugins.SingletonPlugin):
         logger.debug("\n\n pkg_dict: {0} \n\n".format(pkg_dict))
         resources = pkg_dict.get("resources")
 
-        if (len(resources) == 1) & (pkg_dict.get("data_category") == u"px_abundancies"):
-            logger.debug("RESOURCES IN PACKAGE FOUND.")
-            for i in range(len(resources)):
-                if pkg_dict.get("resources")[i].get("format") in ("xlsx", "XLSX"):
-                    logger.debug("EXCEL FILE FOUND.")
-
-                    filename = pkg_dict.get("resources")[i].get("name")
-                    url = pkg_dict.get("resources")[i].get("url")
-                    package_id = pkg_dict.get("resources")[i].get("package_id")
-
-                    # Download excel
-                    logger.debug("CREATING NEW EXCEL...")
-                    filepath_download = download_file(url, filename)
-
-                    # Convert excel file to seperate csv's
-                    csv_filepaths = excel_to_csv(filepath_download, os.getcwd())
-                    logger.debug("csv_filepaths: {}".format(csv_filepaths))
-
-                    # # Upload Excel Under Different Name
-                    for csv_filepath in csv_filepaths:
-                        csv_filename = os.path.basename(csv_filepath)
-                        status_code = create_resource(csv_filepath, package_id, API_KEY, name=csv_filename)
-                        delete_file(csv_filepath)
-                        logger.debug("SUCCES = {0}".format(status_code))
+        # Check if it has resources which need preprocessing.
+        if len(resources) >= 1:
+            preprocessing_pipeline(resources)
 
         return pkg_dict

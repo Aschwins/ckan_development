@@ -32,7 +32,7 @@ cd ckan
 paster db init -c test-core.ini
 cd -
 
-echo "Installing ckanext-example_theme and its requirements..."
+echo "Installing ckanext-dsmdatasetform and its requirements..."
 python setup.py develop
 pip install -r dev-requirements.txt
 

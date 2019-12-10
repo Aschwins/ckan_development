@@ -2,38 +2,39 @@
    these badges work. The necessary Travis and Coverage config files have been
    generated for you.
 
-.. image:: https://travis-ci.org/Aschwins/ckanext-dascheme.svg?branch=master
-    :target: https://travis-ci.org/Aschwins/ckanext-dascheme
+.. image:: https://travis-ci.org/aschwins/ckanext-dsmscheme.svg?branch=master
+    :target: https://travis-ci.org/aschwins/ckanext-dsmscheme
 
-.. image:: https://coveralls.io/repos/Aschwins/ckanext-dascheme/badge.svg
-  :target: https://coveralls.io/r/Aschwins/ckanext-dascheme
+.. image:: https://coveralls.io/repos/aschwins/ckanext-dsmscheme/badge.svg
+  :target: https://coveralls.io/r/aschwins/ckanext-dsmscheme
 
-.. image:: https://pypip.in/download/ckanext-dascheme/badge.svg
-    :target: https://pypi.python.org/pypi//ckanext-dascheme/
+.. image:: https://pypip.in/download/ckanext-dsmscheme/badge.svg
+    :target: https://pypi.python.org/pypi//ckanext-dsmscheme/
     :alt: Downloads
 
-.. image:: https://pypip.in/version/ckanext-dascheme/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dascheme/
+.. image:: https://pypip.in/version/ckanext-dsmscheme/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-dsmscheme/
     :alt: Latest Version
 
-.. image:: https://pypip.in/py_versions/ckanext-dascheme/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dascheme/
+.. image:: https://pypip.in/py_versions/ckanext-dsmscheme/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-dsmscheme/
     :alt: Supported Python versions
 
-.. image:: https://pypip.in/status/ckanext-dascheme/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dascheme/
+.. image:: https://pypip.in/status/ckanext-dsmscheme/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-dsmscheme/
     :alt: Development Status
 
-.. image:: https://pypip.in/license/ckanext-dascheme/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-dascheme/
+.. image:: https://pypip.in/license/ckanext-dsmscheme/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-dsmscheme/
     :alt: License
 
 =============
-ckanext-dascheme
+ckanext-dsmscheme
 =============
 
-This ckan extension recognizes when an excel file gets uploaded. It checks wether this excel file has multiple sheets.
-For each sheet it creates a seperate csv file and uploads the file to CKAN.
+.. Put a description of your extension here:
+   What does it do? What features does it have?
+   Consider including some screenshots or embedding a video!
 
 
 ------------
@@ -52,17 +53,17 @@ Installation
    For example installing any non-Python dependencies or adding any required
    config settings.
 
-To install ckanext-dascheme:
+To install ckanext-dsmscheme:
 
 1. Activate your CKAN virtual environment, for example::
 
      . /usr/lib/ckan/default/bin/activate
 
-2. Install the ckanext-dascheme Python package into your virtual environment::
+2. Install the ckanext-dsmscheme Python package into your virtual environment::
 
-     pip install ckanext-dascheme
+     pip install ckanext-dsmscheme
 
-3. Add ``dascheme`` to the ``ckan.plugins`` setting in your CKAN
+3. Add ``dsmscheme`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
@@ -79,18 +80,18 @@ Document any optional config settings here. For example::
 
     # The minimum number of hours to wait before re-checking a resource
     # (optional, default: 24).
-    ckanext.dascheme.some_setting = some_default_value
+    ckanext.dsmscheme.some_setting = some_default_value
 
 
 ------------------------
 Development Installation
 ------------------------
 
-To install ckanext-dascheme for development, activate your CKAN virtualenv and
+To install ckanext-dsmscheme for development, activate your CKAN virtualenv and
 do::
 
-    git clone https://github.com/Aschwins/ckanext-dascheme.git
-    cd ckanext-dascheme
+    git clone https://github.com/aschwins/ckanext-dsmscheme.git
+    cd ckanext-dsmscheme
     python setup.py develop
     pip install -r dev-requirements.txt
 
@@ -106,15 +107,15 @@ To run the tests, do::
 To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
-    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.dascheme --cover-inclusive --cover-erase --cover-tests
+    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.dsmscheme --cover-inclusive --cover-erase --cover-tests
 
 
 ---------------------------------
-Registering ckanext-dascheme on PyPI
+Registering ckanext-dsmscheme on PyPI
 ---------------------------------
 
-ckanext-dascheme should be availabe on PyPI as
-https://pypi.python.org/pypi/ckanext-dascheme. If that link doesn't work, then
+ckanext-dsmscheme should be availabe on PyPI as
+https://pypi.python.org/pypi/ckanext-dsmscheme. If that link doesn't work, then
 you can register the project on PyPI for the first time by following these
 steps:
 
@@ -139,10 +140,10 @@ steps:
 
 
 ----------------------------------------
-Releasing a New Version of ckanext-dascheme
+Releasing a New Version of ckanext-dsmscheme
 ----------------------------------------
 
-ckanext-dascheme is availabe on PyPI as https://pypi.python.org/pypi/ckanext-dascheme.
+ckanext-dsmscheme is availabe on PyPI as https://pypi.python.org/pypi/ckanext-dsmscheme.
 To publish a new version to PyPI follow these steps:
 
 1. Update the version number in the ``setup.py`` file.
