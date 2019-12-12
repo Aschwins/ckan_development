@@ -8,6 +8,8 @@ import os
 from xlrd import open_workbook
 import pandas as pd
 
+from cgi import FieldStorage
+
 # Logger settings.
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -34,23 +36,23 @@ def get_user_api_key():
 def create_resource(filepath, package_id, api_key, name="Default"):
     """
     Function to create a resource via the API. Could maybe also be done with ckan.action function.
-    TODO: Should be able to handle a lot more: minimum is data category included.
-    :param filepath:
-    :param package_id:
-    :param api_key:
-    :param name:
-    :return:
+    TODO: **kwargs
     """
-    logger.debug("CREATING RESOURCE THROUGH THE API.")
-    with open(filepath, 'rb') as f:
-        files = {"upload": f}
-        values = {"package_id": package_id, "name": name}
-        headers = {"Authorization": api_key}
-        api_url = "{0}/api/action/resource_create".format(SITE_URL)
-        r = requests.post(api_url, files=files, data=values, headers=headers)
+    # with open(filepath, 'rb') as f:
+    #     files = {"upload": f}
+    #     values = {"package_id": package_id, "name": name}
+    #     headers = {"Authorization": api_key}
+    #     api_url = "{0}/api/action/resource_create".format(SITE_URL)
+    #     r = requests.post(api_url, files=files, data=values, headers=headers)
 
-    logger.debug("\n Created resource...")
-    return r.status_code
+    with open(filepath, 'rb') as f:
+        field_storage = FieldStorage()
+        field_storage.file = f
+        field_storage.filename = name
+        new_resource = toolkit.get_action('resource_create')(
+            {}, {'package_id': package_id, 'upload': field_storage, "name": name}
+        )
+    return new_resource
 
 
 def delete_file(filepath):
@@ -121,8 +123,6 @@ def preprocessing_pipeline(resources):
             preprocess_px_abundancies(resource)
             id = resource.get('id')
             toolkit.get_action('resource_patch')({}, {'id': id, 'preprocessing_done': 'True'})
-            #ckan.logic.action.update.resource_update(context, data_dict)
-            #ckan.logic.action.patch.resource_patch(context, data_dict)
 
     # Above should should be rewritten so it handles the pipelines for each data category. Which means for each
     # category it should check if it has a preprocessing pipeline, done yes or no, do it yes or no.

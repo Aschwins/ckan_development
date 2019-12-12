@@ -205,3 +205,38 @@ author=u'ckan_admin', controller=u'package', environ={'AUTH_TYPE': 'cookie',
 pylons=<pylons.util.PylonsContext object at 0x7f47489976d0>,
 remote_addr='172.20.0.1', start_response=<function repl_start_response at 0x7f4748a5dcf8>,
 user=u'ckan_admin', userobj=<User id=ef32a4d0-3b22-4ce8-8b3b-9750da94854f name=ckan_admi...tive>>
+
+pkg_dict:
+  {u'license_title': u'Creative Commons Attribution',
+  u'relationships_as_object': [],
+  u'num_tags': 1,
+  u'id': u'f4df833a-e211-461a-94b3-f5944305408f',
+  u'metadata_created': u'2019-12-09T14:44:49.670582',
+  u'metadata_modified': u'2019-12-09T14:45:02.881853',
+  u'title': u'beedrill',
+  u'state': u'active',
+  u'creator_user_id': u'ea3ee4de-f65e-4efc-80e1-7be29b23ff51',
+  u'type': u'dataset',
+  u'resources': [
+    {
+      u'mimetype': u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    u'cache_url': None,
+    'tracking_summary': {'total': 0, 'recent': 0},
+    u'hash': u'',
+    'description': u'beedrill',
+    u'name': u'excel2.xlsx',
+    u'format': u'XLSX',
+    u'url': u'http://localhost:5000/dataset/f4df833a-e211-461a-94b3-f5944305408f/resource/f1f0e981-ac21-48f2-bd17-550e6dfbae2f/download/excel2.xlsx',
+    u'datastore_active': False,
+    u'cache_last_updated': None,
+    u'package_id': u'f4df833a-e211-461a-94b3-f5944305408f',
+    u'created': u'2019-12-09T14:45:01.999404',
+    u'state': u'active',
+    u'mimetype_inner': None,
+    u'last_modified': u'2019-12-09T14:45:01.970010',
+    u'position': 0,
+    u'revision_id': u'77085370-f535-4948-9134-0f99c2b39d44',
+    u'url_type': u'upload',
+    u'id': u'f1f0e981-ac21-48f2-bd17-550e6dfbae2f',
+    u'resource_type': None, u'size': 9890
+    }, {u'mimetype': u'text/csv', u'cache_url': None, 'tracking_summary': {'total': 0, 'recent': 0}, u'hash': u'', u'description': u'', u'name': u'excel2Sheet1.csv', u'format': u'CSV', u'url': u'http://localhost:5000/dataset/f4df833a-e211-461a-94b3-f5944305408f/resource/e2b3dee2-ef04-4b35-82a1-2aa0835b505c/download/excel2sheet1.csv', u'datastore_active': False, u'cache_last_updated': None, u'package_id': u'f4df833a-e211-461a-94b3-f5944305408f', u'created': u'2019-12-09T14:45:02.575810', u'state': u'active', u'mimetype_inner': None, u'last_modified': u'2019-12-09T14:45:02.545935', u'position': 1, u'revision_id': u'0536f46c-da3b-4914-9d78-a018445adbd6', u'url_type': u'upload', u'id': u'e2b3dee2-ef04-4b35-82a1-2aa0835b505c', u'resource_type': None, u'size': 191}, {u'mimetype': u'text/csv', u'cache_url': None, 'tracking_summary': {'total': 0, 'recent': 0}, u'hash': u'', u'description': u'', u'name': u'excel2Sheet2.csv', u'format': u'CSV', u'url': u'http://localhost:5000/dataset/f4df833a-e211-461a-94b3-f5944305408f/resource/a518e467-e1a4-461f-a949-f707a94b4193/download/excel2sheet2.csv', u'datastore_active': False, u'cache_last_updated': None, u'package_id': u'f4df833a-e211-461a-94b3-f5944305408f', u'created': u'2019-12-09T14:45:02.915258', u'state': u'active', u'mimetype_inner': None, u'last_modified': u'2019-12-09T14:45:02.851609', u'position': 2, u'revision_id': u'0536f46c-da3b-4914-9d78-a018445adbd6', u'url_type': u'upload', u'id': u'a518e467-e1a4-461f-a949-f707a94b4193', u'resource_type': None, u'size': 191}], u'num_resources': 3, u'tags': [{u'vocabulary_id': None, u'state': u'active', u'display_name': u'beedrill', u'id': u'7ba99027-b942-46fb-9f8c-cb2835031438', u'name': u'beedrill'}], 'tracking_summary': {'total': 0, 'recent': 0}, u'groups': [], u'license_id': u'cc-by', u'relationships_as_subject': [], u'name': u'beedrill', u'isopen': True, u'notes': u'beedrill', u'owner_org': u'9b9318df-fe87-4db3-a81a-3ec4404a29ae', u'license_url': u'http://www.opendefinition.org/licenses/cc-by', u'data_category': u'px_abundancies', u'organization': {u'description': u'jj', u'created': u'2019-12-04T19:46:32.346373', u'title': u'DSM', u'name': u'dsm', u'is_organization': True, u'state': u'active', u'image_url': u'', u'revision_id': u'486c13f5-ef73-44dc-9047-6d184776f5d2', u'type': u'organization', u'id': u'9b9318df-fe87-4db3-a81a-3ec4404a29ae', u'approval_status': u'approved'}, u'revision_id': u'77085370-f535-4948-9134-0f99c2b39d44'}
